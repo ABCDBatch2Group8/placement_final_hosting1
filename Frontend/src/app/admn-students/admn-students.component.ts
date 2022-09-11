@@ -25,6 +25,7 @@ student={
 firstname!:string
 lastname!:string
 email!:string
+server_address: string = '/api'; 
   
   constructor(
     private http:HttpClient,
@@ -35,7 +36,7 @@ email!:string
     this.getStudents();
   }
   getStudents(){
-    this.http.get<any>("http://localhost:3000/admin/students").subscribe(
+    this.http.get<any>(`${this.server_address}/admin/students`).subscribe(
       response=>{
         this.students=response;
         console.log(response)
